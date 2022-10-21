@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>צור קשר - Cascade Rentals</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body class="is-preload">
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header">
+        <nav id="nav">
+          <ul>
+            <li><a href="index.html">דף הבית</a></li>
+            <li>
+              <a href="#" class="icon solid fa-angle-down">תפריט</a>
+              <ul>
+                <li><a href="generic.html"> מידע עלינו</a></li>
+                <li><a href="elements.html">שירותים</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Main -->
+      <section id="main" class="container medium">
+        <header>
+          <style>
+            h2 {
+              color: white;
+              text-shadow: 40%;
+            }
+          </style>
+          <h2>צור קשר</h2>
+        </header>
+        <div class="box">
+          <div class="row gtr-50 gtr-uniform">
+            <div class="col-6 col-12-mobilep">
+              <input type="text" name="name" id="name" placeholder="Name" />
+            </div>
+            <div class="col-6 col-12-mobilep">
+              <input type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            <div class="col-12">
+              <select name="category" id="category">
+                <option value="">- קטגוריה -</option>
+                <option value="השכרות יומיות">השכרות יומיות</option>
+                <option value="השכרות חודשיות">השכרות חודשיות</option>
+                <option value="עיצוב ובינוי">עיצוב ובינוי</option>
+                <option value="ייעוץ">ייעוץ</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <textarea
+                name="message"
+                id="message"
+                placeholder="Enter your message"
+                rows="6"
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <ul class="actions special">
+                <li>
+                  <button class="form-button" onclick="sendEmail()">שלח</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+  <style>
+    body {
+      background-image: url(images/flower1.jpeg);
+      background-size: cover;
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    // const apiKey =
+    // "A739164211BBC76755354B51ACD71C5BE2B17CD5E8F912712D1FD3F0005E11C6CE771C756AA639B67D37639A40BAA3C7";
+    const SMTPConfig = {
+      Host: "smtp.elasticemail.com",
+      Username: "shaybi.office@gmail.com",
+      Password: "87FAB5A2FE858CA3646A00765013E77676C5",
+      // server: "smtp.elasticemail.com",
+      // port: "2525",
+    };
+
+    function sendEmail() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      const emailDetails = {
+        To: "shaybi.office@gmail.com",
+        From: SMTPConfig.Username,
+        Subject: `Cascade rentals - ${
+          document.getElementById("category").value
+        }`,
+        Body: `
+        <div style="display: block; direction: ltr">
+        <h3>A new email from: ${name}</h3>
+        <p>Email: ${email}</p>
+        <p>Message:</p>
+        <p>${document.getElementById("message").value}</p>
+        </div>
+        `,
+      };
+
+      Email.send({
+        ...SMTPConfig,
+        ...emailDetails,
+      }).then((message) => alert(message));
+    }
+  </script>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+</html>
