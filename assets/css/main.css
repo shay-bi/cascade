@@ -4157,3 +4157,22 @@ img {
 .form-button:hover {
   background-color: #737373;
 }
+
+.info-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info-row-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-row-text > h2 {
+  color: black;
+}
+
+.info-row > img {
+  width: 20%;
+}
